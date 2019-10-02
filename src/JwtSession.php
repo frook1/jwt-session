@@ -199,7 +199,7 @@ class JwtSession implements SessionHandlerInterface
                 (time()+$this->sessionConfig->getTimeoutMinutes()*60) ,
                 $this->sessionConfig->getCookiePath(),
                 $this->sessionConfig->getCookieDomain(),
-                false,
+                $this->sessionConfig->getCookieSecureHttps(),
                 true
             );
             if (defined("SETCOOKIE_FORTEST")) {

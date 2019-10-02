@@ -13,6 +13,7 @@ class SessionConfig
     protected $sessionContext = 'default';
     protected $timeoutMinutes = 20;
     protected $cookieDomain = null;
+    protected $cookieSecureHttps = null;
     protected $cookiePath = '/';
     protected $jwtKey = null;
     protected $replaceSessionHandler = null;
@@ -41,9 +42,10 @@ class SessionConfig
         return $this;
     }
 
-    public function withCookie($domain, $path = "/") {
+    public function withCookie($domain, $path = "/", $secureHttps = false) {
         $this->cookieDomain = $domain;
         $this->cookiePath = $path;
+        $this->cookieSecureHttps = $path;
         return $this;
     }
 
@@ -92,6 +94,14 @@ class SessionConfig
     public function getCookieDomain()
     {
         return $this->cookieDomain;
+    }
+
+    /**
+     * @return null
+     */
+    public function getCookieSecureHttps()
+    {
+        return $this->cookieSecureHttps;
     }
 
     /**
